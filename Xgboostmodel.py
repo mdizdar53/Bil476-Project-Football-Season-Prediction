@@ -50,3 +50,21 @@ sns.barplot(x='Metric', y='Score', data=metrics_df)
 plt.ylim(0, 1)
 plt.title("Model Başarı Metrikleri - XGBoost")
 plt.show()
+
+# Özellik önemleri
+importances = model.feature_importances_
+importance_df = pd.DataFrame({
+    'Feature': X.columns,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
+
+print("\n🔍 XGBoost - Öznitelik Önemi:")
+print(importance_df)
+
+# Görselleştirme
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Importance', y='Feature', data=importance_df.head(15))
+plt.title("XGBoost - En Önemli 15 Özellik")
+plt.tight_layout()
+plt.show()
+
