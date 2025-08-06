@@ -72,3 +72,25 @@ plt.tight_layout()
 plt.show()
 
 
+# 6. Özniteliklerin önem derecelerini al
+importances = model.feature_importances_
+feature_names = X.columns
+
+# 7. DataFrame olarak sırala
+importance_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
+
+print("\n🔍 Özniteliklerin Maç Sonucuna Etkisi:")
+print(importance_df)
+
+# 8. Görselleştirme
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Importance', y='Feature', data=importance_df.head(15))
+plt.title("Random Forest - En Önemli 15 Özellik")
+plt.xlabel("Özellik Önemi")
+plt.ylabel("Özellik")
+plt.tight_layout()
+plt.show()
+
