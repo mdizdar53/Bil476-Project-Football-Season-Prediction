@@ -53,4 +53,26 @@ plt.ylim(0, 1)
 plt.title("Model Başarı Metrikleri - Logistic Regression")
 plt.show()
 
+# Özellik önemleri (katsayılar)
+coefficients = model.coef_
+feature_names = X.columns
+
+# Çok sınıflı olduğu için ortalama alalım
+avg_importance = coefficients.mean(axis=0)
+
+importance_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Importance': avg_importance
+}).sort_values(by='Importance', ascending=False)
+
+print("\n🔍 Logistic Regression - Öznitelik Önemi:")
+print(importance_df)
+
+# Görselleştirme
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Importance', y='Feature', data=importance_df.head(15))
+plt.title("Logistic Regression - En Önemli 15 Özellik")
+plt.tight_layout()
+plt.show()
+
 
