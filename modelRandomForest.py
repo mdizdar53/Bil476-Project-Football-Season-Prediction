@@ -72,16 +72,4 @@ plt.tight_layout()
 plt.show()
 
 
-# 6. Özniteliklerin önem derecelerini al
-importances = model.feature_importances_
-feature_names = X.columns
-
-# 7. DataFrame olarak sırala
-importance_df = pd.DataFrame({
-    'Feature': feature_names,
-    'Importance': importances
-}).sort_values(by='Importance', ascending=False)
-
-print("\n🔍 Özniteliklerin Maç Sonucuna Etkisi:")
-print(importance_df)
 
