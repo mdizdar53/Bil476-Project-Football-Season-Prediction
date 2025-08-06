@@ -2,18 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const xlsx = require("xlsx");
 const path = require("path");
-
-const allWeeks = [
-  // Örnek sadece 1 hafta; sen tüm haftaları buraya ekleyebilirsin
-  {
-    week: 1,
-    urls: [
-      "https://fbref.com/en/matches/97218e9f/Werder-Bremen-Bayern-Munich-August-18-2023-Bundesliga"
-      // diğer 8 maçın URL'leri
-    ],
-  },
-  // ...
-];
+const { allWeeks } = require("./links"); // links.js içinde 10 sezonluk maç linkleri var
 
 async function extractMatchData(page, url) {
   function sleep(ms) {
